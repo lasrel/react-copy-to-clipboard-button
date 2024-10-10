@@ -49,6 +49,13 @@ function _define_property(obj, key, value) {
     }
     return obj;
 }
+function _instanceof(left, right) {
+    if (right != null && typeof Symbol !== "undefined" && right[Symbol.hasInstance]) {
+        return !!right[Symbol.hasInstance](left);
+    } else {
+        return left instanceof right;
+    }
+}
 function _iterable_to_array_limit(arr, i) {
     var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"];
     if (_i == null) return;
@@ -340,7 +347,15 @@ var CopyButton = function(_param) {
                                 2
                             ];
                         }
-                        textToCopy = typeof target === "string" ? target : (_target_current = target.current) === null || _target_current === void 0 ? void 0 : _target_current.innerText;
+                        if (typeof target === "string") {
+                            textToCopy = target;
+                        } else if (_instanceof(target.current, HTMLInputElement) || _instanceof(target.current, HTMLTextAreaElement)) {
+                            textToCopy = target.current.value;
+                        } else if ((_target_current = target.current) === null || _target_current === void 0 ? void 0 : _target_current.isContentEditable) {
+                            textToCopy = target.current.innerText;
+                        } else if (target.current) {
+                            textToCopy = target.current.innerText;
+                        }
                         if (!textToCopy) {
                             console.error("Target element not found or doesn't have text.");
                             return [

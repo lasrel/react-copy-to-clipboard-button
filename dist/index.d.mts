@@ -2,7 +2,7 @@ import React, { ComponentPropsWithRef, RefObject } from 'react';
 
 interface CopyButtonProps extends ComponentPropsWithRef<"button"> {
     /** Text to copy or Element to copy from */
-    target: RefObject<HTMLElement> | string;
+    target: RefObject<HTMLElement | HTMLInputElement | HTMLTextAreaElement> | string;
     icons?: {
         prev: JSX.Element;
         temp: JSX.Element;
