@@ -1,0 +1,17 @@
+:root {
+  --primary: theme("colors.sky.500");
+  --primary: 14 165 233;
+
+  --background: 18 18 18;
+  --surface: 24 24 24;
+  --surface-top: 29 29 29;
+
+  --text: theme("colors.gray.100");
+  --text-secondary: 188 188 188;
+
+  --tag: 53 60 69;
+
+  --border: 52 52 52;
+
+  --disabled: 53 60 69;
+}
