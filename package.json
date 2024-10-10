@@ -1,0 +1,32 @@
+{
+  "name": "react-copy-to-clipboard-button",
+  "version": "1.0.0",
+  "description": "Copy-to-clipboard React Button",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsup src/index.tsx --format esm,cjs --dts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "react",
+    "react-component",
+    "copy-to-clipboard",
+    "clipboard",
+    "copy",
+    "button"
+  ],
+  "author": "Florian Weigelt",
+  "license": "MIT",
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "tsup": "^8.3.0"
+  },
+  "devDependencies": {
+    "@swc/core": "^1.7.35",
+    "@types/react": "^18.3.11",
+    "@types/react-dom": "^18.3.0",
+    "typescript": "^5.6.3"
+  }
+}
