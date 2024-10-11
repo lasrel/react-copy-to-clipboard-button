@@ -1,10 +1,14 @@
 import { ComponentPropsWithRef } from "react";
 
-const Subheadline = ({ children }: ComponentPropsWithRef<"h4">) => (
-  <div className="flex gap-4 items-center w-full mb-2 mt-8">
-    <h4 className="font-semibold text-text-secondary">{children}</h4>
-    <div className="flex-1 h-px border border-dotted border-border" />
-  </div>
+const Subheadline = ({ children }: ComponentPropsWithRef<"h3">) => (
+  <h3
+    className="
+      text-text-secondary text-center mb-4 mt-6 first:mt-0 relative inline-flex justify-center w-max self-center
+      after:content-[''] after:w-full after:max-w-20 after:h-px after:bg-border after:absolute after:-bottom-1.5
+    "
+  >
+    {children}
+  </h3>
 );
 
 export default Subheadline;
