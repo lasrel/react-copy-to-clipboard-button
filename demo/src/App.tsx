@@ -74,7 +74,7 @@ const App = () => {
         <CopyButton target={demoInputRef}>Copy Input</CopyButton>
       </div>
       <div>
-        <div ref={demoDivRef} className="bg-surface-top p-2 rounded text-sm">This is text inside a DIV</div>
+        <div ref={demoDivRef}>This is text inside a DIV</div>
         <CopyButton target={demoDivRef}>Copy Div Text</CopyButton>
       </div>
     </div>
