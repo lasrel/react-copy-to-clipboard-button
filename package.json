@@ -17,10 +17,10 @@
     "button"
   ],
   "author": "Florian Weigelt",
-  "homepage": "https://github.com/lasrel/react-copy-to-clipboard-button",
+  "homepage": "https://lasrel.github.io/react-copy-to-clipboard-button/",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/lasrel/react-copy-to-clipboard-button.git"
+    "url": "git:https://github.com/lasrel/react-copy-to-clipboard-button.git"
   },
   "license": "MIT",
   "peerDependencies": {
