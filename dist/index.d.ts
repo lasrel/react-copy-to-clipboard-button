@@ -3,9 +3,9 @@ import React, { ComponentPropsWithRef, RefObject } from 'react';
 interface CopyButtonProps extends ComponentPropsWithRef<"button"> {
     /** Text to copy or Element to copy from */
     target: RefObject<HTMLElement | HTMLInputElement | HTMLTextAreaElement> | string;
-    icons?: {
-        prev: JSX.Element;
-        temp: JSX.Element;
+    feedback?: {
+        initial?: JSX.Element;
+        success: JSX.Element;
         loading?: JSX.Element;
     };
     /** Time in ms until the original Icon comes back */
@@ -13,6 +13,6 @@ interface CopyButtonProps extends ComponentPropsWithRef<"button"> {
     /** Trim text */
     trim?: boolean;
 }
-declare const CopyButton: ({ target, icons, duration, children, trim, ...props }: CopyButtonProps) => React.JSX.Element;
+declare const CopyButton: ({ target, feedback, duration, children, trim, ...props }: CopyButtonProps) => React.JSX.Element;
 
 export { CopyButton as default };

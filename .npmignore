@@ -4,3 +4,5 @@ src
 .gitignore
 tsconfig.json
 demo/
+.github/
+test/

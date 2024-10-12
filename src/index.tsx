@@ -3,9 +3,9 @@ import React, { ComponentPropsWithRef, RefObject, useState } from "react";
 interface CopyButtonProps extends ComponentPropsWithRef<"button"> {
   /** Text to copy or Element to copy from */
   target: RefObject<HTMLElement | HTMLInputElement | HTMLTextAreaElement> | string;
-  icons?: {
-    prev: JSX.Element;
-    temp: JSX.Element;
+  feedback?: {
+    initial?: JSX.Element;
+    success: JSX.Element;
     loading?: JSX.Element;
   };
   /** Time in ms until the original Icon comes back */
@@ -14,8 +14,8 @@ interface CopyButtonProps extends ComponentPropsWithRef<"button"> {
   trim?: boolean;
 }
 
-const CopyButton = ({ target, icons, duration = 3000, children, trim = true, ...props }: CopyButtonProps) => {
-  const [currentIcon, setCurrentIcon] = useState(icons?.prev);
+const CopyButton = ({ target, feedback, duration = 3000, children, trim = true, ...props }: CopyButtonProps) => {
+  const [currentFeedback, setCurrentFeedback] = useState(feedback?.initial);
 
   const copy = async () => {
     // check if clipboard API is supported
@@ -48,18 +48,20 @@ const CopyButton = ({ target, icons, duration = 3000, children, trim = true, ...
     }
 
     try {
-      // set loading icon if available
-      if (icons?.loading) setCurrentIcon(icons.loading);
+      // set loading feedback if available
+      if (feedback?.loading) setCurrentFeedback(feedback.loading);
 
       // copy to clipboard
       await navigator.clipboard.writeText(textToCopy);
 
-      // replace icon after copying to clipboard. reset after `duration`
-      if (icons) {
-        setCurrentIcon(icons.temp);
-        setTimeout(() => {
-          setCurrentIcon(icons.prev);
-        }, duration);
+      // replace feedback after copying to clipboard. reset after `duration`
+      if (feedback) {
+        setCurrentFeedback(feedback.success);
+        if (duration !== 0) {
+          setTimeout(() => {
+            setCurrentFeedback(feedback.initial);
+          }, duration);
+        }
       }
     } catch (error) {
       console.error("Failed to copy text: ", error);
@@ -69,7 +71,7 @@ const CopyButton = ({ target, icons, duration = 3000, children, trim = true, ...
   return (
     <button {...props} onClick={copy}>
       {children}
-      {currentIcon}
+      {currentFeedback}
     </button>
   );
 };

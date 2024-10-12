@@ -1,7 +1,7 @@
 {
   "name": "react-copy-to-clipboard-button",
-  "version": "1.0.0",
-  "description": "Copy-to-clipboard React Button",
+  "version": "1.0.3",
+  "description": "Copy-to-clipboard React Button with visual feedback",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
@@ -17,16 +17,23 @@
     "button"
   ],
   "author": "Florian Weigelt",
+  "homepage": "https://github.com/lasrel/react-copy-to-clipboard-button",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lasrel/react-copy-to-clipboard-button.git"
+  },
   "license": "MIT",
-  "dependencies": {
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "tsup": "^8.3.0"
+  "peerDependencies": {
+    "react": ">=17.0.0",
+    "react-dom": ">=17.0.0"
   },
   "devDependencies": {
     "@swc/core": "^1.7.35",
     "@types/react": "^18.3.11",
     "@types/react-dom": "^18.3.0",
-    "typescript": "^5.6.3"
+    "tsup": "^8.3.0",
+    "typescript": "^5.6.3",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   }
 }

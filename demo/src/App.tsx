@@ -91,13 +91,13 @@ const App = () => {
             <Subheadline>Toggle Icon after copy</Subheadline>
             <div className="flex gap-2">
               <input ref={demoIconToggleRef} type="text" defaultValue="Click the button to copy me and toggle the icon" className="input" />
-              <CopyButton target={demoIconToggleRef} icons={{ prev: <Icon icon="ph:copy" />, temp: <Icon icon="ph:check" /> }} className="button" />
+              <CopyButton target={demoIconToggleRef} feedback={{ initial: <Icon icon="ph:copy" />, success: <Icon icon="ph:check" /> }} className="button" />
             </div>
             <Code>
               {`
-icons?: {
-  prev: JSX.Element;      // Default Icon shown
-  temp: JSX.Element;      // Replaces 'prev' for 'duration'
+feedback?: {
+  initial: JSX.Element;   // Default success feedback
+  success: JSX.Element;   // Replaces 'prev' for 'duration'
   loading?: JSX.Element;  // Shown while waiting for copy
 };
 duration?: number;        // Time in ms until the original Icon returns. Default 3000.
@@ -145,7 +145,7 @@ const App = () => {
                 </span>
                 <CopyButton
                   target={demo1Ref}
-                  icons={{ prev: <Icon icon="ph:copy" />, temp: <Icon icon="ph:check" /> }}
+                  feedback={{ initial: <Icon icon="ph:copy" />, success: <Icon icon="ph:check" /> }}
                   className="border border-primary/70 rounded p-1 inline-flex items-center justify-center text-base"
                 />
               </div>
@@ -156,7 +156,7 @@ const App = () => {
               <CopyButton
                 className="p-2 bg-primary/10 rounded text-sm flex items-center gap-2"
                 target={demo2Ref}
-                icons={{ prev: <Icon icon="ph:copy" className="text-lg" />, temp: <Icon icon="ph:check" className="text-lg" /> }}
+                feedback={{ initial: <Icon icon="ph:copy" className="text-lg" />, success: <Icon icon="ph:check" className="text-lg" /> }}
               >
                 <span className="text-text-secondary shrink-0">Your Key:</span>
                 <span className="flex-1 text-primary text-start" ref={demo2Ref}>
@@ -171,7 +171,7 @@ const App = () => {
                 className="p-2 bg-primary/10 rounded text-sm flex items-center gap-2"
                 target={demo3Ref}
                 duration={0}
-                icons={{ prev: <Icon icon="ph:copy" className="text-lg" />, temp: <Icon icon="ph:check" className="text-lg" /> }}
+                feedback={{ initial: <Icon icon="ph:copy" className="text-lg" />, success: <Icon icon="ph:check" className="text-lg" /> }}
               >
                 <span className="text-text-secondary shrink-0">Your Key:</span>
                 <span className="flex-1 text-primary text-start" ref={demo3Ref}>
@@ -202,7 +202,7 @@ const App = () => {
           </span>
           <CopyButton
             target={demo1Ref}
-            icons={{ prev: <Icon icon="ph:copy" />, temp: <Icon icon="ph:check" /> }}
+            feedback={{ initial: <Icon icon="ph:copy" />, success: <Icon icon="ph:check" /> }}
             className="bg-primary/50 rounded p-1 inline-flex items-center justify-center text-base"
           />
         </div>
@@ -213,7 +213,7 @@ const App = () => {
         <CopyButton
           className="p-2 bg-primary/10 rounded text-sm flex items-center gap-2"
           target={demo2Ref}
-          icons={{ prev: <Icon icon="ph:copy" className="text-lg" />, temp: <Icon icon="ph:check" className="text-lg" /> }}
+          feedback={{ initial: <Icon icon="ph:copy" className="text-lg" />, success: <Icon icon="ph:check" className="text-lg" /> }}
         >
           <span className="text-text-secondary shrink-0">Your Key:</span>
           <span className="flex-1 text-primary text-start" ref={demo2Ref}>
@@ -228,7 +228,7 @@ const App = () => {
           className="p-2 bg-primary/10 rounded text-sm flex items-center gap-2"
           target={demo3Ref}
           duration={0}
-          icons={{ prev: <Icon icon="ph:copy" className="text-lg" />, temp: <Icon icon="ph:check" className="text-lg" /> }}
+          feedback={{ initial: <Icon icon="ph:copy" className="text-lg" />, success: <Icon icon="ph:check" className="text-lg" /> }}
         >
           <span className="text-text-secondary shrink-0">Your Key:</span>
           <span className="flex-1 text-primary text-start" ref={demo3Ref}>

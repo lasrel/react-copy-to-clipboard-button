@@ -257,14 +257,14 @@ function _ts_generator(thisArg, body) {
 }
 import React, { useState } from "react";
 var CopyButton = function(_param) {
-    var target = _param.target, icons = _param.icons, _param_duration = _param.duration, duration = _param_duration === void 0 ? 3e3 : _param_duration, children = _param.children, _param_trim = _param.trim, trim = _param_trim === void 0 ? true : _param_trim, props = _object_without_properties(_param, [
+    var target = _param.target, feedback = _param.feedback, _param_duration = _param.duration, duration = _param_duration === void 0 ? 3e3 : _param_duration, children = _param.children, _param_trim = _param.trim, trim = _param_trim === void 0 ? true : _param_trim, props = _object_without_properties(_param, [
         "target",
-        "icons",
+        "feedback",
         "duration",
         "children",
         "trim"
     ]);
-    var _useState = _sliced_to_array(useState(icons === null || icons === void 0 ? void 0 : icons.prev), 2), currentIcon = _useState[0], setCurrentIcon = _useState[1];
+    var _useState = _sliced_to_array(useState(feedback === null || feedback === void 0 ? void 0 : feedback.initial), 2), currentFeedback = _useState[0], setCurrentFeedback = _useState[1];
     var copy = /*#__PURE__*/ function() {
         var _ref = _async_to_generator(function() {
             var _target_current, textToCopy, error;
@@ -303,18 +303,20 @@ var CopyButton = function(_param) {
                             ,
                             4
                         ]);
-                        if (icons === null || icons === void 0 ? void 0 : icons.loading) setCurrentIcon(icons.loading);
+                        if (feedback === null || feedback === void 0 ? void 0 : feedback.loading) setCurrentFeedback(feedback.loading);
                         return [
                             4,
                             navigator.clipboard.writeText(textToCopy)
                         ];
                     case 2:
                         _state.sent();
-                        if (icons) {
-                            setCurrentIcon(icons.temp);
-                            setTimeout(function() {
-                                setCurrentIcon(icons.prev);
-                            }, duration);
+                        if (feedback) {
+                            setCurrentFeedback(feedback.success);
+                            if (duration !== 0) {
+                                setTimeout(function() {
+                                    setCurrentFeedback(feedback.initial);
+                                }, duration);
+                            }
                         }
                         return [
                             3,
@@ -340,7 +342,7 @@ var CopyButton = function(_param) {
     }();
     return /* @__PURE__ */ React.createElement("button", _object_spread_props(_object_spread({}, props), {
         onClick: copy
-    }), children, currentIcon);
+    }), children, currentFeedback);
 };
 var src_default = CopyButton;
 export { src_default as default };
