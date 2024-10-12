@@ -8,7 +8,7 @@ interface CopyButtonProps extends ComponentPropsWithRef<"button"> {
     success: JSX.Element;
     loading?: JSX.Element;
   };
-  /** Time in ms until the original Icon comes back */
+  /** Time in ms until the original Feedback comes back */
   duration?: number;
   /** Trim text */
   trim?: boolean;
