@@ -12,7 +12,7 @@ import "./styles/main.css";
 const App = () => {
   const demoInputRef = useRef<HTMLInputElement>(null);
   const demoDivRef = useRef<HTMLDivElement>(null);
-  const demoIconToggleRef = useRef<HTMLInputElement>(null);
+  const demoFeedbackToggleRef = useRef<HTMLInputElement>(null);
   const demo1Ref = useRef<HTMLDivElement>(null);
   const demo2Ref = useRef<HTMLDivElement>(null);
   const demo3Ref = useRef<HTMLDivElement>(null);
@@ -85,13 +85,17 @@ const App = () => {
         </CodeBlock>
       </Container>
 
-      <Container title="Use Icons">
+      <Container title="Show Feedback">
         <Wrapper className="mb-4">
           <div className="flex flex-col gap-2">
-            <Subheadline>Toggle Icon after copy</Subheadline>
+            <Subheadline>Toggle Feedback after copy</Subheadline>
             <div className="flex gap-2">
-              <input ref={demoIconToggleRef} type="text" defaultValue="Click the button to copy me and toggle the icon" className="input" />
-              <CopyButton target={demoIconToggleRef} feedback={{ initial: <Icon icon="ph:copy" />, success: <Icon icon="ph:check" /> }} className="button" />
+              <input ref={demoFeedbackToggleRef} type="text" defaultValue="Click the button to copy me and toggle the icon" className="input" />
+              <CopyButton
+                target={demoFeedbackToggleRef}
+                feedback={{ initial: <Icon icon="ph:copy" />, success: <Icon icon="ph:check" /> }}
+                className="button"
+              />
             </div>
             <Code>
               {`
@@ -100,29 +104,29 @@ feedback?: {
   success: JSX.Element;   // Replaces 'prev' for 'duration'
   loading?: JSX.Element;  // Shown while waiting for copy
 };
-duration?: number;        // Time in ms until the original Icon returns. Default 3000.
-                          // 0 disables the toggle and keeps the 'temp' icon after copy.
+duration?: number;        // Time in ms until the original Feedback returns. Default 3000.
+                          // 0 disables the toggle and keeps the 'temp' feedback after copy.
               `}
             </Code>
           </div>
         </Wrapper>
 
-        <CodeBlock label="Icon Example">
+        <CodeBlock label="Feedback Example">
           {
             /*js*/ `
 import CopyButton from "react-copy-to-clipboard-button";
 
 const App = () => {
-  const demoIconToggleRef = useRef<HTMLInputElement>(null);
+  const demoFeedbackToggleRef = useRef<HTMLInputElement>(null);
 
   return (
     <div>
-      <input ref={demoIconToggleRef} type="text" defaultValue="Click the button to copy me and toggle the icon" className="input" />
+      <input ref={demoFeedbackToggleRef} type="text" defaultValue="Click the button to copy me and toggle the icon" className="input" />
       <CopyButton 
-        target={demoIconToggleRef} 
-        icons={{ 
-          prev: <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 256 256"><path fill="currentColor" d="M216 28H88a12 12 0 0 0-12 12v36H40a12 12 0 0 0-12 12v128a12 12 0 0 0 12 12h128a12 12 0 0 0 12-12v-36h36a12 12 0 0 0 12-12V40a12 12 0 0 0-12-12m-60 176H52V100h104Zm48-48h-24V88a12 12 0 0 0-12-12h-68V52h104Z"></path></svg>, 
-          temp: <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 256 256"><path fill="currentColor" d="m229.66 77.66l-128 128a8 8 0 0 1-11.32 0l-56-56a8 8 0 0 1 11.32-11.32L96 188.69L218.34 66.34a8 8 0 0 1 11.32 11.32"></path></svg>,
+        target={demoFeedbackToggleRef} 
+        feedback={{ 
+          initial: <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 256 256"><path fill="currentColor" d="M216 28H88a12 12 0 0 0-12 12v36H40a12 12 0 0 0-12 12v128a12 12 0 0 0 12 12h128a12 12 0 0 0 12-12v-36h36a12 12 0 0 0 12-12V40a12 12 0 0 0-12-12m-60 176H52V100h104Zm48-48h-24V88a12 12 0 0 0-12-12h-68V52h104Z"></path></svg>, 
+          success: <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 256 256"><path fill="currentColor" d="m229.66 77.66l-128 128a8 8 0 0 1-11.32 0l-56-56a8 8 0 0 1 11.32-11.32L96 188.69L218.34 66.34a8 8 0 0 1 11.32 11.32"></path></svg>,
         }}
       />
     </div>
